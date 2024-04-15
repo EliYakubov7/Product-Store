@@ -1,0 +1,7 @@
+<input type="text" nbInput placeholder="Filter by name" id="search" class="search-input" #filter>
+<button type="button" nbButton status="primary" (click)="filterResults(filter.value)">Search</button>
+<br>
+<br>
+<div *ngFor="let product of filteredProducts">
+	<app-product [product]="product"></app-product>
+</div>

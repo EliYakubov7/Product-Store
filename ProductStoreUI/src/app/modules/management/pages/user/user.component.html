@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="userlist">
+			<table class="table table-striped">
+					<thead>
+							<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Username</th>
+									<th>Email</th>
+									<th></th>
+									<th></th>
+							</tr>
+					</thead>
+					<tbody>
+							<tr *ngFor="let user of users; let i = index">
+									<th scope="row">{{ i + 1 }}</th>
+									<td>{{ user.name }}</td>
+									<td>{{ user.userName }}</td>
+									<td>{{ user.email }}</td>
+									<td>
+											<button type="button" nbButton status="info" (click)="onEdit(i)">Edit</button>
+									</td>
+									<td>
+											<button *ngIf="!(userId === user.id)" type="button" nbButton status="danger"
+											 (click)="onDelete(i,user.id)">Delete</button>
+									</td>
+							</tr>
+					</tbody>
+			</table>
+	</div>
+	<br>
+	<div class="userentry" *ngIf="showNew">
+			<form (ngSubmit)="onSave()">
+					<div class="form-group">
+							<label for="name-input">Name</label>
+							<input class="form-control" id="name-input" type="text" [(ngModel)]="usersModel.name" name="name" required
+							autocomplete="off">
+					</div>
+					<br >
+					<div class="form-group">
+							<label for="username-input">Username</label>
+							<input class="form-control" id="username-input" type="text" [(ngModel)]="usersModel.userName" name="userName" required
+							autocomplete="off">
+					</div>
+					<br >
+					<div class="form-group">
+							<label for="email-input">Email</label>
+							<input class="form-control" id="email-input" type="email" [(ngModel)]="usersModel.email" name="email" required
+							autocomplete="off">
+					</div>
+					<br >
+					<button class="action-button" type="submit" nbButton status="success">{{ submitType }}</button>
+					<button class="cancel-button" type="button" nbButton status="danger" (click)="onCancel()">Cancel</button>
+			</form>
+	</div>
+</div>

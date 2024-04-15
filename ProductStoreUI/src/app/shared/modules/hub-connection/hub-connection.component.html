@@ -1,0 +1,13 @@
+@if (hubUsers().length > 0) {
+	<nb-card>
+		<nb-card-body>
+			@for (user of hubUsers(); track $index) {
+				<nb-user
+					[name]="user.name"
+					badgePosition="bottom right">
+				</nb-user>
+				{{ user.isAuthenticated ? 'ONLINE' : 'OFFLINE' }}
+			}
+		</nb-card-body>
+	</nb-card>
+}

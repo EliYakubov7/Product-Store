@@ -1,0 +1,108 @@
+<div class="container">
+	<div class="reglist">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>StockQuantity</th>
+					<th>Category</th>
+					<th>ImageUrl</th>
+					<th>Manufacturer</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let product of products; let i = index">
+					<th scope="row">{{ i + 1 }}</th>
+					<td>{{ product.name }}</td>
+					<td>{{ product.description }}</td>
+					<td>{{ product.price }}</td>
+					<td>{{ product.stockQuantity }}</td>
+					<td>{{ product.category }}</td>
+					<td>{{ product.imageUrl }}</td>
+					<td>{{ product.manufacturer }}</td>
+					<td>
+						<button type="button" nbButton status="info" (click)="onEdit(i)">Edit</button>
+					</td>
+					<td>
+						<button type="button" nbButton status="danger" (click)="onDelete(i, product.productId)">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="text-right">
+			<button type="submit" nbButton status="primary" (click)="onNew()">New</button>
+    </div>
+	</div>
+	<br>
+	<div class="regentry" *ngIf="showNew">
+		<form (ngSubmit)="onSave()">
+			<div class="form-group row">
+				<label for="name-input" class="col-lg-2 col-form-label">Name</label>
+				<div class="col-10">
+					<input  #nameInput="ngModel" id="name-input" class="form-control" type="text" [(ngModel)]="productsModel.name"
+					 name="name" required autocomplete="off">
+					<p class="caption status-danger" *ngIf="nameInput.invalid && nameInput.touched">
+						Name is required!
+					</p>
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="description-input" class="col-lg-2 col-form-label">Description</label>
+				<div class="col-10">
+					<input id="description-input" class="form-control" type="text" [(ngModel)]="productsModel.description"
+					 name="description" autocomplete="off">
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="price-input" class="col-lg-2 col-form-label">Price</label>
+				<div class="col-10">
+					<input id="price-input" class="form-control" type="text" [(ngModel)]="productsModel.price" name="price"
+					 autocomplete="off">
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="stockQuantity-input" class="col-lg-2 col-form-label">Stock Quantity</label>
+				<div class="col-10">
+					<input id="stockQuantity-input" class="form-control" type="number" [(ngModel)]="productsModel.stockQuantity"
+					 name="stockQuantity" autocomplete="off">
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="category-input" class="col-lg-2 col-form-label">Category</label>
+				<div class="col-10">
+					<input id="category-input" class="form-control" type="text" [(ngModel)]="productsModel.category" name="category"
+					autocomplete="off">
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="imageUrl-input" class="col-lg-2 col-form-label">Image Url</label>
+				<div class="col-10">
+					<input id="imageUrl-input" class="form-control" type="text" [(ngModel)]="productsModel.imageUrl" name="imageUrl"
+					autocomplete="off">
+				</div>
+			</div>
+			<br>
+			<div class="form-group row">
+				<label for="manufacturer-input" class="col-lg-2 col-form-label">Manufacturer</label>
+				<div class="col-10">
+					<input id="manufacturer-input" class="form-control" type="text" [(ngModel)]="productsModel.manufacturer"
+					 name="manufacturer" autocomplete="off" autocomplete="off">
+				</div>
+			</div>
+			<br>
+			<button class="action-button" type="submit" nbButton status="success" [disabled]="!productsModel.name" 
+			[class.btn-pulse]="submitType">{{ submitType }}</button>
+			<button class="cancel-button" type="button" nbButton status="danger" (click)="onCancel()">Cancel</button>
+		</form>
+	</div>
+</div>

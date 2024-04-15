@@ -1,0 +1,20 @@
+<nb-layout>
+	<nb-layout-header fixed>
+		Product Store
+	</nb-layout-header>
+
+	<nb-sidebar>
+		<nb-list>
+			<nb-list-item>
+				<nb-menu [items]="items"></nb-menu>
+			</nb-list-item>
+			<nb-list-item>
+				<app-hub-connection></app-hub-connection>
+			</nb-list-item>
+		</nb-list>
+	</nb-sidebar>
+
+	<nb-layout-column>
+		<router-outlet></router-outlet>
+	</nb-layout-column>
+</nb-layout>

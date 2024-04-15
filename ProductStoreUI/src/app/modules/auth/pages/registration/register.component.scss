@@ -1,0 +1,16 @@
+:host {
+	.title {
+		margin-bottom: 2rem;
+	}
+}
+
+.register-password-input-container,
+.register-repeat-password-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.register-password-toggle-btn,
+.register-repeat-password-toggle-btn {
+    margin-left: 10px;
+}
