@@ -52,7 +52,7 @@ zone.js                         0.14.4
 
 ## Further help
 
-1. Make sure the port of the following files: `dev.ts`, `local.ts` and `prod.ts` is the same as the port of the API Server.
+1. Make sure the port of the following files: `ProductStoreUI -> environments -> consts ->` `dev.ts`, `local.ts` and `prod.ts` is the same as the port of the API Server.
 
 2. Login with SiteAdministrator: `Email: admin@admin.com` and `Password: admin` (Register is for client only).
 
